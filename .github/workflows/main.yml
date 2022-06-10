@@ -34,7 +34,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           host: ${{ secrets.AWS_DEPLOY_HOST }}
-          username: ${{ secrets.AWS_DEPLOY_USER }}
+          user: ${{ secrets.AWS_DEPLOY_USER }}
           key: ${{ secrets.AWS_DEPLOY_KEY }}
           command: |
             cd /home/ubuntu/ed-fusion/api

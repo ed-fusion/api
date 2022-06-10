@@ -37,6 +37,6 @@ jobs:
           username: ${{ secrets.AWS_DEPLOY_USER }}
           key: ${{ secrets.AWS_DEPLOY_KEY }}
           command: |
-            cd ${{ AWS_DEPLOY_PATH }}
+            cd "${{ AWS_DEPLOY_PATH }}"
             npm install
             node ace migration:run --force

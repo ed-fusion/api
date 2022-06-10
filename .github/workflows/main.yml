@@ -18,18 +18,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      #- run: npm ci
-      #- run: npm run build
+      - run: npm ci
+      - run: npm run build
 
-      #- name: Rsync Deploy
-      #  uses: burnett01/rsync-deployments@5.2
-      #  with:
-      #    switches: -avzr --delete --exclude="" --include="" --filter=""
-      #    path: ./build/*
-      #    remote_path: ${{ secrets.AWS_DEPLOY_PATH }}
-      #    remote_host: ${{ secrets.AWS_DEPLOY_HOST }}
-      #    remote_user: ${{ secrets.AWS_DEPLOY_USER }}
-      #    remote_key: ${{ secrets.AWS_DEPLOY_KEY }}
+      - name: Rsync Deploy
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete --exclude="" --include="" --filter=""
+          path: ./build/*
+          remote_path: ${{ secrets.AWS_DEPLOY_PATH }}
+          remote_host: ${{ secrets.AWS_DEPLOY_HOST }}
+          remote_user: ${{ secrets.AWS_DEPLOY_USER }}
+          remote_key: ${{ secrets.AWS_DEPLOY_KEY }}
       - name: After Deploy
         uses: fifsky/ssh-action@master
         with:
@@ -38,5 +38,6 @@ jobs:
           key: ${{ secrets.AWS_DEPLOY_KEY }}
           command: |
             cd /home/ubuntu/ed-fusion/api
+
             npm install
             node ace migration:run --force

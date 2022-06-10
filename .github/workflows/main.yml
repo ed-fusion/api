@@ -41,3 +41,4 @@ jobs:
 
             npm install
             node ace migration:run --force
+            sudo systemctl restart api

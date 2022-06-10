@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [ deploy ]
+    branches:
+      - deploy
 
   workflow_dispatch:
 
@@ -10,8 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    if: github.ref == 'refs/heads/master'
 
     strategy:
       matrix:

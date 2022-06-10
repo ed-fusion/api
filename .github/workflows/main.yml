@@ -28,6 +28,6 @@ jobs:
           switches: -avzr --delete --exclude="" --include="" --filter=""
           path: ./build/*
           remote_path: ${{ secrets.AWS_DEPLOY_PATH }}
-          remote_host: ${{ secrets.AWS_HOST }}
-          remote_user: ${{ secrets.AWS_USER }}
-          remote_key: ${{ secrets.AWS_KEY }}
+          remote_host: ${{ secrets.AWS_DEPLOY_HOST }}
+          remote_user: ${{ secrets.AWS_DEPLOY_USER }}
+          remote_key: ${{ secrets.AWS_DEPLOY_KEY }}

@@ -43,14 +43,13 @@ const databaseConfig: DatabaseConfig = {
       },
       replicas: {
         read: {
-          connection: [
-            {
-              host: Env.get('MYSQL_READ_HOST'),
-            },
-            {
-              host: Env.get('MYSQL_HOST'),
-            },
-          ],
+          connection: Env.get('MYSQL_READ_HOST')
+            .split(',')
+            .map((host) => {
+              return {
+                host,
+              }
+            }),
         },
         write: {
           connection: {
